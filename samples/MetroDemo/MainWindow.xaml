@@ -19,7 +19,15 @@
                       d:DesignHeight="600"
                       d:DesignWidth="800"
                       d:DataContext="{d:DesignInstance MetroDemo:MainWindowViewModel}">
-
+    <Controls:MetroWindow.Style>
+        <Style TargetType="{x:Type Controls:MetroWindow}">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Path=CanModifyWindow}" Value="False">
+                    <Setter Property="ResizeMode" Value="NoResize" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Controls:MetroWindow.Style>
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -163,7 +171,7 @@
                               Header="Show SimpleDialog Externally" />
                 </MenuItem>
             </Menu>
-
+            <ToggleButton Content="Toogle CanModifyWindow" IsChecked="{Binding Path=CanModifyWindow}"></ToggleButton>
             <Controls:MetroAnimatedSingleRowTabControl Grid.Row="1">
                 <TabItem Header="buttons">
                     <exampleViews:ButtonsExample DataContext="{Binding}" />

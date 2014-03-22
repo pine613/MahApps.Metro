@@ -50,6 +50,16 @@ namespace MetroDemo
 
             BrushResources = FindBrushResources();
         }
+        private bool canModifyWindow;
+        public bool CanModifyWindow
+        {
+            get { return this.canModifyWindow; }
+            set
+            {
+                this.canModifyWindow = value;
+                RaisePropertyChanged("CanModifyWindow");
+            }
+        }
 
         public string Title { get; set; }
         public int SelectedIndex { get; set; }
